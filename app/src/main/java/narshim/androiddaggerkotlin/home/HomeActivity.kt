@@ -13,5 +13,7 @@ class HomeActivity : AppCompatActivity() {
 
         var presenter = MyApplication[this].presenters().get(HomePresenter::class)
 
+        presenter.printMessage("Presenter called")
+
     }
 }

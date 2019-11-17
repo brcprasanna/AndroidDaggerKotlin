@@ -1,3 +1,9 @@
 package narshim.androiddaggerkotlin.home
 
-class HomePresenter : BasePresenter<Any?>
+import android.util.Log
+
+class HomePresenter : BasePresenter<Any?> {
+    fun printMessage(message: String) {
+        Log.i("Prasanna", message);
+    }
+}
