@@ -6,22 +6,27 @@ import narshim.androiddaggerkotlin.dagger.modules.AppModule
 
 class MyApplication : Application() {
 
-    private lateinit var component: MyAwesomeComponent
-    private lateinit var presenterRepository: PresenterRepository
+    private var component: MyAwesomeComponent? = null
+    private var presenterRepository: PresenterRepository? = null
 
-    fun component(): MyAwesomeComponent {
+    override fun onCreate() {
+        super.onCreate()
+        component()
+    }
+
+    fun component(): MyAwesomeComponent? {
         if (component == null) {
             component = DaggerMyAwesomeComponent.builder().appModule(AppModule(this)).build()
         }
-        return component
+        return this!!.component
     }
 
     fun presenters(): PresenterRepository {
         if (presenterRepository == null) {
             presenterRepository = PresenterRepository()
-            component().inject(presenterRepository)
+            component()?.inject(presenterRepository)
         }
-        return presenterRepository;
+        return presenterRepository as PresenterRepository;
     }
 
     companion object {

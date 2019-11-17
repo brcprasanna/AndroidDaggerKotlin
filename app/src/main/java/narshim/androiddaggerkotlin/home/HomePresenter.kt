@@ -1,5 +1,3 @@
 package narshim.androiddaggerkotlin.home
 
-class HomePresenter() : BasePresenter<Any?> {
-
-}
+class HomePresenter : BasePresenter<Any?>
