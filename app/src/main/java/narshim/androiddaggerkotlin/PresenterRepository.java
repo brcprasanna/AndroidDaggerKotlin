@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import kotlin.reflect.KClass;
 import narshim.androiddaggerkotlin.home.BasePresenter;
 import narshim.androiddaggerkotlin.home.HomePresenter;
 
@@ -15,7 +16,7 @@ public class PresenterRepository {
 
     private Map<Class<? extends BasePresenter>, Provider> providerMap;
 
-    public <T extends BasePresenter> T get(Class<T> classDef) {
+    public <T extends BasePresenter> T get(KClass<T> classDef) {
         if (providerMap == null) {
             providerMap = createProverMap();
         }

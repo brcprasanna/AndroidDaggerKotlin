@@ -1,6 +1,7 @@
 package narshim.androiddaggerkotlin
 
 import android.app.Application
+import android.content.Context
 import narshim.androiddaggerkotlin.dagger.modules.AppModule
 
 class MyApplication : Application() {
@@ -10,13 +11,12 @@ class MyApplication : Application() {
 
     fun component(): MyAwesomeComponent {
         if (component == null) {
-            //component = D.builder().appModule(AppModule(this)).build();
             component = DaggerMyAwesomeComponent.builder().appModule(AppModule(this)).build()
         }
         return component
     }
 
-    fun presenter(): PresenterRepository {
+    fun presenters(): PresenterRepository {
         if (presenterRepository == null) {
             presenterRepository = PresenterRepository()
             component().inject(presenterRepository)
@@ -24,5 +24,10 @@ class MyApplication : Application() {
         return presenterRepository;
     }
 
+    companion object {
+        operator fun get(context: Context): MyApplication {
+            return context.applicationContext as MyApplication
+        }
+    }
 
 }
