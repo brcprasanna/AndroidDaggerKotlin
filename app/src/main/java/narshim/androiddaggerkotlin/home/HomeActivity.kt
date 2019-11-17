@@ -1,9 +1,10 @@
-package narshim.androiddaggerkotlin
+package narshim.androiddaggerkotlin.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import narshim.androiddaggerkotlin.R
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
